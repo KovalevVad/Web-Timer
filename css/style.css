@@ -113,7 +113,7 @@ main {
   background-image: url(/image/speaker-none.svg);
 }
 
-.newTimer {
+.blockTimer {
   display: none;
   flex-direction: column;
   position: absolute;
@@ -128,7 +128,7 @@ main {
   background-color: var(--background__black);
 }
 
-.newTimer__time {
+.blockTimer__time {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -136,14 +136,14 @@ main {
   background-color: var(--background__black);
 }
 
-.newTimer__time p {
+.blockTimer__time p {
   color: #F8F8FC;
   font-size: 5.6rem;
   margin: 0px;
 }
 
-.newTimer__time > input:first-child,
-.newTimer__time > input:last-child {
+.blockTimer__time > input:first-child,
+.blockTimer__time > input:last-child {
   height: 60px;
   width: 80px;
 

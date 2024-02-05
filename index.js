@@ -7,7 +7,8 @@ let speaker = document.querySelector('#speaker')
 let blackTh = document.querySelector('#black')
 let whiteTh = document.querySelector('#white')
 let bodyBack = document.querySelector('body')
-
+let blockTimer = document.querySelector('.blockTimer')
+let blockTimer__button = document.querySelector('#blockTimer__button')
 
 let timerId;
 start.addEventListener('click', function() {
@@ -70,3 +71,17 @@ whiteTh.addEventListener('click', function() {
   blackTh.style.display = 'block'
   time.style.cssText = 'color: #121214; transition: 1s'
 })
+
+newTimer.addEventListener('click', function() {
+  blockTimer.style.display = 'flex'
+
+  blockTimer__button.addEventListener('click', function() {
+    blockTimer.style.display = 'none'
+    const minute = document.querySelector('#minute')
+    const seconds = document.querySelector('#seconds')
+
+    time.innerHTML = (minute.value < 10 ? '0' + minute.value : minute.value) + ':' + (seconds.value < 10 ? '0' + seconds.value : seconds.value)
+  })
+})
+
+
