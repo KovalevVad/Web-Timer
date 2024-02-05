@@ -1,0 +1,160 @@
+/* roboto-700 - cyrillic_latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  src: url('../fonts/roboto-v30-cyrillic_latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+:root {
+  font-size: 62.5%;
+  --black__button:#242424;
+  --background__black:  #121214;
+}
+
+body {
+  transition: ease-in;
+  background-color: var(--background__black);
+  overflow-y: hidden;
+}
+
+main {
+  display: flex;
+  height: 100vh;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.theme__black,
+.theme__white {
+  display: block;
+  width: 32px;
+  height: 32px;
+
+  background-repeat: no-repeat;
+  border: none;
+  background-position: center center;
+  background-color: var(--background__black);
+  background-image: url(/image/sun-bold.svg);
+  cursor: pointer;
+
+  margin-top: 32px;
+  margin-right: 32px;
+  margin-left: auto;
+}
+
+.theme__white {
+  display: none;
+  background-color: #F8F8FC;
+  background-image: url(/image/moon-bold.svg);
+}
+
+.container__time {
+  color: #F8F8FC;
+  font-family: Roboto;
+  font-size: 9.6rem;
+  font-style: normal;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.container__button {
+  display: flex;
+  width: 224px;
+  height: 64px;
+
+  align-items: center;
+  border-radius: 100px;
+  background: var(--black__button);
+
+  padding: 22px 40px;
+  gap: 16px;
+}
+
+.container__button > input {
+  cursor: pointer;
+}
+
+.button__play,
+.button__stop,
+.button__timer,
+.button__remove,
+.button__speaker,
+.button__speaker-none {
+  width: 64px;
+  height: 64px;
+
+  background-repeat: no-repeat;
+  border: none;
+  background-position: center center;
+  background-color: var(--black__button);
+  background-image: url(/image/play.svg);
+  cursor: pointer;
+}
+
+.button__stop {
+  display: none;
+  background-image: url(/image/pause.svg);
+}
+
+.button__timer {
+  background-image: url(/image/timer.svg);
+}
+
+.button__remove {
+  display: none;
+  background-image: url(/image/remove.svg);
+}
+
+.button__speaker {
+  background-image: url(/image/speaker-none.svg);
+}
+
+.newTimer {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  width: 400px;
+  height: 200px;
+
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+
+  border: 3px #F8F8FC solid;
+  background-color: var(--background__black);
+}
+
+.newTimer__time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--background__black);
+}
+
+.newTimer__time p {
+  color: #F8F8FC;
+  font-size: 5.6rem;
+  margin: 0px;
+}
+
+.newTimer__time > input:first-child,
+.newTimer__time > input:last-child {
+  height: 60px;
+  width: 80px;
+
+  font-family: Roboto;
+  font-size: 5.6rem;
+  font-style: normal;
+  font-weight: 700;
+  text-align: center;
+
+  color: #F8F8FC;
+  border: 2px #F8F8FC solid;
+  background-color: var(--background__black);
+}
+

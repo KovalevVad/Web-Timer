@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Timer</title>
+
+  <link rel="stylesheet" href = css/normalize.css">
+  <link rel="stylesheet" href = "css/style.css">
+
+  <script src = "index.js" defer></script>
+</head>
+<body>
+  <header>
+    <button class = "theme__black" id = "white"></button>
+    <button class = "theme__white" id = "black"></button>
+  </header>
+  <main>
+    <div class = "container">
+      <div class = "container__time">00:05</div>
+      <div class = "container__button">
+        <button class = "button__play" id = "start"></button>
+        <button class = "button__stop" id = "stop"></button>
+        <button class = "button__timer" id = "newTimer"></button>
+        <button class = "button__remove" id = "remove"></button>
+        <button class = "button__speaker" id = "speaker"></button>
+      </div>
+    </div>
+    <div class="newTimer">
+      <div class="newTimer__time">
+        <input type="text" value="25">
+        <p>:</p>
+        <input type="text" value="00">
+      </div>
+      <button>Установить таймер</button>
+    </div>
+  </main>
+  <footer></footer>
+</body>
+</html>
