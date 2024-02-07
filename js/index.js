@@ -9,6 +9,7 @@ let whiteTh = document.querySelector('#white')
 let bodyBack = document.querySelector('body')
 let blockTimer = document.querySelector('.blockTimer')
 let blockTimer__button = document.querySelector('#blockTimer__button')
+const blob = document.querySelectorAll('.blob')
 
 let timerId;
 start.addEventListener('click', function() {
@@ -26,6 +27,7 @@ start.addEventListener('click', function() {
     if (str === '00:00') {
       clearInterval(timerId);
       time.innerHTML = '00:00'
+      speakerMusic()
     }
   }, 1000);
 })
@@ -47,22 +49,30 @@ remove.addEventListener('click', function() {
   clearInterval(timerId);
 })
 
-let speakerTest = 'off'
+let speakerTest = false
 speaker.addEventListener('click', function() {
-  if (speakerTest === 'off') {
-    speaker.style.cssText = 'background-image: url(/image/speaker-high.svg);'
-    speakerTest = 'on'
+  if (speakerTest === false) {
+    speaker.style.cssText = 'background-image: url(/image/speaker-high.svg)'
+    speakerTest = true
   } else {
-    speaker.style.cssText = 'background-image: url(/image/speaker-none.svg);'
-    speakerTest = 'off'
+    speaker.style.cssText = 'background-image: url(/image/speaker-none.svg)'
+    speaker.innerHTML = ``
+    speakerTest = false
   }
 })
+
+function speakerMusic() {
+  if (time.textContent === '00:00' & speakerTest === true) {
+    speaker.innerHTML = `<audio src="music/1.mp3" autoplay></audio>`
+  }
+}
 
 blackTh.addEventListener('click', function() {
   bodyBack.style.cssText = 'background: #121214; transition: 1s'
   whiteTh.style.display = 'block'
   blackTh.style.display = 'none'
   time.style.cssText = 'color: #F8F8FC; transition: 1s'
+  blobs.forEach(el => el.style.cssText = 'background: rgb(111, 3, 111)')
 })
 
 whiteTh.addEventListener('click', function() {
@@ -70,18 +80,21 @@ whiteTh.addEventListener('click', function() {
   whiteTh.style.display = 'none'
   blackTh.style.display = 'block'
   time.style.cssText = 'color: #121214; transition: 1s'
+  blobs.forEach(el => el.style.cssText = 'background: #4783c7')
 })
 
 newTimer.addEventListener('click', function() {
   blockTimer.style.display = 'flex'
+  const minute = document.querySelector('#minute')
+  const seconds = document.querySelector('#seconds')
 
   blockTimer__button.addEventListener('click', function() {
     blockTimer.style.display = 'none'
-    const minute = document.querySelector('#minute')
-    const seconds = document.querySelector('#seconds')
-
-    time.innerHTML = (minute.value < 10 ? '0' + minute.value : minute.value) + ':' + (seconds.value < 10 ? '0' + seconds.value : seconds.value)
+    const totalMinute = minute.value < 10 ? '0' + +minute.value : minute.value
+    const totalSeconds =  seconds.value < 10 ? '0' + +seconds.value : seconds.value ///БАГ если больше 3 значений
+    time.innerHTML = totalMinute + ':' + totalSeconds
   })
 })
+
 
 

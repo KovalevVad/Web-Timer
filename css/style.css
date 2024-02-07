@@ -9,8 +9,9 @@
 
 :root {
   font-size: 62.5%;
-  --black__button:#242424;
-  --background__black:  #121214;
+  --black__button: #242424;
+  --background__black: #121214;
+  --background__white: #F8F8FC;
 }
 
 body {
@@ -20,9 +21,8 @@ body {
 }
 
 main {
-  display: flex;
   height: 100vh;
-
+  display: flex;
   align-items: center;
   justify-content: center;
 }
@@ -47,12 +47,12 @@ main {
 
 .theme__white {
   display: none;
-  background-color: #F8F8FC;
+  background-color: var(--background__white);
   background-image: url(/image/moon-bold.svg);
 }
 
 .container__time {
-  color: #F8F8FC;
+  color: var(--background__white);
   font-family: Roboto;
   font-size: 9.6rem;
   font-style: normal;
@@ -124,7 +124,7 @@ main {
   align-items: center;
   gap: 30px;
 
-  border: 3px #F8F8FC solid;
+  border: 3px var(--background__white) solid;
   background-color: var(--background__black);
 }
 
@@ -137,13 +137,14 @@ main {
 }
 
 .blockTimer__time p {
-  color: #F8F8FC;
+  color: var(--background__white);
   font-size: 5.6rem;
   margin: 0px;
 }
 
 .blockTimer__time > input:first-child,
-.blockTimer__time > input:last-child {
+.blockTimer__time > input:last-child,
+.blockTimer > button {
   height: 60px;
   width: 80px;
 
@@ -153,8 +154,56 @@ main {
   font-weight: 700;
   text-align: center;
 
-  color: #F8F8FC;
-  border: 2px #F8F8FC solid;
+  color: var(--background__white);
+  border: 3px solid;
   background-color: var(--background__black);
+  border-image: linear-gradient(var(--angle), purple, blue) 1;
+  animation: 4s rotate linear infinite;
+  --angle: 0deg;
 }
+
+.blockTimer > button {
+  font-size: 2rem;
+  width: auto;
+  height: auto;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.blobs {
+  filter: blur(40px);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.blob {
+  width: 400px;
+  aspect-ratio: 1;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.blob--blue {
+  left: 400px;
+  background: #4783c7;
+}
+
+.blob--purple {
+  background: rgb(111, 3, 111);
+}
+
+
+
 
