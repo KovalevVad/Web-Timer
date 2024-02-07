@@ -91,17 +91,17 @@ main {
   border: none;
   background-position: center center;
   background-color: var(--black__button);
-  background-image: url(/image/play.svg);
+  background-image: url(./image/play.svg);
   cursor: pointer;
 }
 
 .button__stop {
   display: none;
-  background-image: url(/image/pause.svg);
+  background-image: url(./image/pause.svg);
 }
 
 .button__timer {
-  background-image: url(/image/timer.svg);
+  background-image: url(./image/timer.svg);
 }
 
 .button__remove {
