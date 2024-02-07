@@ -106,11 +106,11 @@ main {
 
 .button__remove {
   display: none;
-  background-image: url(/image/remove.svg);
+  background-image: url(image/remove.svg);
 }
 
 .button__speaker {
-  background-image: url(/image/speaker-none.svg);
+  background-image: url(image/speaker-none.svg);
 }
 
 .blockTimer {

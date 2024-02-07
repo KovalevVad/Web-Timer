@@ -36,7 +36,7 @@
 
 
 const blobs = document.querySelectorAll('.blob');
-console.log(blobs)
+
 blobs.forEach(function(blob) {
   let x = Math.random() * (window.innerWidth - blob.offsetWidth);
   let y = Math.random() * (window.innerHeight - blob.offsetHeight);
