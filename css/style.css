@@ -27,6 +27,7 @@ main {
   justify-content: center;
 }
 
+
 .theme__black,
 .theme__white {
   display: block;
@@ -110,7 +111,7 @@ main {
 }
 
 .button__speaker {
-  background-image: url(/image/speaker-high.svg);
+  background-image: url(/image/speaker-none.svg);
 }
 
 .blockTimer {

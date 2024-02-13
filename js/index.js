@@ -72,7 +72,7 @@ blackTh.addEventListener('click', function() {
   whiteTh.style.display = 'block'
   blackTh.style.display = 'none'
   time.style.cssText = 'color: #F8F8FC; transition: 1s'
-  blobs.forEach(el => el.style.cssText = 'background: rgb(111, 3, 111)')
+  blob.forEach(el => el.style.cssText = 'background: rgb(111, 3, 111)')
 })
 
 whiteTh.addEventListener('click', function() {
@@ -80,7 +80,7 @@ whiteTh.addEventListener('click', function() {
   whiteTh.style.display = 'none'
   blackTh.style.display = 'block'
   time.style.cssText = 'color: #121214; transition: 1s'
-  blobs.forEach(el => el.style.cssText = 'background: #4783c7')
+  blob.forEach(el => el.style.cssText = 'background: #4783c7')
 })
 
 newTimer.addEventListener('click', function() {
@@ -90,11 +90,30 @@ newTimer.addEventListener('click', function() {
 
   blockTimer__button.addEventListener('click', function() {
     blockTimer.style.display = 'none'
-    const totalMinute = minute.value < 10 ? '0' + +minute.value : minute.value
-    const totalSeconds =  seconds.value < 10 ? '0' + +seconds.value : seconds.value ///БАГ если больше 3 значений
+    let totalMinute = minute.value < 10 ? '0' + +minute.value : minute.value
+    let totalSeconds =  seconds.value < 10 ? '0' + +seconds.value : seconds.value
+    if (testTimer(totalMinute) === false) {
+      totalMinute = '00'
+    }
+
+    if (testTimer(totalSeconds) === false) {
+      totalSeconds = '00'
+    }
+
     time.innerHTML = totalMinute + ':' + totalSeconds
   })
 })
+
+function testTimer(numbers) {
+  if (numbers.length > 2) {
+    return false
+  }
+
+  const reg = new RegExp('^[0-9]+$');
+  return reg.test(Number(numbers));
+}
+
+
 
 
 
