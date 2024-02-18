@@ -1,3 +1,4 @@
+import {testTimer, aormatedTime} from './helper.js'
 let time = document.querySelector('.container__time');
 let start = document.querySelector('#start');
 let stop  = document.querySelector('#stop');
@@ -10,6 +11,7 @@ let bodyBack = document.querySelector('body')
 let blockTimer = document.querySelector('.blockTimer')
 let blockTimer__button = document.querySelector('#blockTimer__button')
 const blob = document.querySelectorAll('.blob')
+const DEFAULT_TIME = '00:00'
 
 let timerId;
 start.addEventListener('click', function() {
@@ -23,10 +25,10 @@ start.addEventListener('click', function() {
     let seconds = (Number(str.slice(3)) + Number(str.slice(0, 2)) * 60) - 1
     let minSec = Math.floor(seconds / 60)
     let totalSeconds = seconds - minSec * 60
-    time.innerHTML = (minSec < 10 ? '0' + minSec : minSec)  + ':' + (totalSeconds < 10 ? '0' + totalSeconds : totalSeconds)
-    if (str === '00:00') {
+    time.innerHTML =  aormatedTime(minSec)  + ':' + aormatedTime(totalSeconds)
+    if (str === DEFAULT_TIME) {
       clearInterval(timerId);
-      time.innerHTML = '00:00'
+      time.innerHTML = DEFAULT_TIME
       speakerMusic()
     }
   }, 1000);
@@ -51,18 +53,15 @@ remove.addEventListener('click', function() {
 
 let speakerTest = false
 speaker.addEventListener('click', function() {
-  if (speakerTest === false) {
-    speaker.style.cssText = 'background-image: url(/image/speaker-high.svg)'
-    speakerTest = true
-  } else {
-    speaker.style.cssText = 'background-image: url(/image/speaker-none.svg)'
-    speaker.innerHTML = ``
-    speakerTest = false
+  speaker.style.cssText = speakerTest ? 'background-image: url(/image/speaker-none.svg)' : 'background-image: url(/image/speaker-high.svg)'
+  if (speakerTest) {
+    speaker.innerHTML = ''
   }
+  speakerTest = !speakerTest
 })
 
 function speakerMusic() {
-  if (time.textContent === '00:00' & speakerTest === true) {
+  if (time.textContent === DEFAULT_TIME && speakerTest === true) {
     speaker.innerHTML = `<audio src="music/1.mp3" autoplay></audio>`
   }
 }
@@ -90,13 +89,13 @@ newTimer.addEventListener('click', function() {
 
   blockTimer__button.addEventListener('click', function() {
     blockTimer.style.display = 'none'
-    let totalMinute = minute.value < 10 ? '0' + +minute.value : minute.value
-    let totalSeconds =  seconds.value < 10 ? '0' + +seconds.value : seconds.value
-    if (testTimer(totalMinute) === false) {
+    let totalMinute = aormatedTime(minute.value)
+    let totalSeconds = aormatedTime(seconds.value)
+    if (!testTimer(totalMinute)) {
       totalMinute = '00'
     }
 
-    if (testTimer(totalSeconds) === false) {
+    if (!testTimer(totalSeconds)) {
       totalSeconds = '00'
     }
 
@@ -104,14 +103,6 @@ newTimer.addEventListener('click', function() {
   })
 })
 
-function testTimer(numbers) {
-  if (numbers.length > 2) {
-    return false
-  }
-
-  const reg = new RegExp('^[0-9]+$');
-  return reg.test(Number(numbers));
-}
 
 
 
